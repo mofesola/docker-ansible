@@ -1,0 +1,10 @@
+---
+- name: Build an image with the docker_image module
+  hosts: localhost
+  tasks:
+    - name: Create a network
+      docker_network:
+        name: docker_net
+  roles:
+    - docker-one
+    - docker-two

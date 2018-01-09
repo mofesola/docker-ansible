@@ -1,0 +1,10 @@
+---
+# tasks file for docker-one
+- name: Create Container One
+  docker_container:
+    name: "{{ name }}"
+    image: "{{ image }}"
+    privileged: true
+    command: ["sleep", "infinity"]
+    networks:
+      - name: "{{ network }}"
