@@ -8,3 +8,12 @@
   roles:
     - docker-one
     - docker-two
+
+- name: Test connection between docker containers
+  hosts: localhost
+  tasks:
+    - name: Test Connection
+      shell: ./test_connection.sh
+      register: shell_output
+    - debug:
+        var: shell_output.stdout_lines
