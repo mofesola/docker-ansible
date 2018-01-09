@@ -1,5 +1,6 @@
 ---
 # vars file for docker-two
-image: ubuntu:14.04
-name: container_two
+image: ubuntu-ssh-dest
+container_name: container_two
 network: docker_net
+authorized_ssh_key:

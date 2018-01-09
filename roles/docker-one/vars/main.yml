@@ -1,5 +1,5 @@
 ---
 # vars file for docker-one
-image: ubuntu:14.04
-name: container_one
+image: ubuntu-ssh-src
+container_name: container_one
 network: docker_net

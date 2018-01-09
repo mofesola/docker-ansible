@@ -1,10 +1,18 @@
 ---
 # tasks file for docker-one
+- name: Create Docker Image
+  docker_image:
+    path: ./roles/docker-one/files
+    name: ubuntu-ssh-src
+    tag: latest
 - name: Create Container One
   docker_container:
-    name: "{{ name }}"
+    name: "{{ container_name }}"
     image: "{{ image }}"
-    privileged: true
+    state: started
+    restart_policy: unless-stopped
     command: ["sleep", "infinity"]
     networks:
       - name: "{{ network }}"
+- name: Get SSH Keys
+  shell: roles/docker-one/files/script.sh
