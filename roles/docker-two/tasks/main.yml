@@ -1,10 +1,17 @@
 ---
 # tasks file for docker-two
+- name: Create Docker Image
+  docker_image:
+    path: ./roles/docker-two/files
+    name: ubuntu-ssh-dest
+    tag: latest
 - name: Create Container Two
   docker_container:
-    name: "{{ name }}"
+    name: "{{ container_name }}"
     image: "{{ image }}"
-    privileged: true
-    command: ["sleep", "infinity"]
+    state: started
+    restart_policy: unless-stopped
+    env:
+      AUTHORIZED_SSH_KEY: "{{ authorized_ssh_key }}"
     networks:
       - name: "{{ network }}"
